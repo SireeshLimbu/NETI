@@ -1,0 +1,29 @@
+<head>
+  <title>NETI</title>
+</head>
+
+<body>
+  {{> survey}}
+</body>
+
+<template name="survey">
+  <h1>Please Fill up the following parameters :-</h1>
+
+  <p> Number of Rounds : <input type="text" class="roundtext"/> </p>
+  <p> Time of Each Round (In Secs) : <input type="text" class="timetext" /></p>
+  <p> Option format for the Questionnaire :-
+    <form method="post"  >
+        <fieldset>
+         <input type="radio" class="rad" value="Radio"/>
+            <tr>Radio</tr><br />
+         <input type="radio" class="rad" value="Checkbox"/>
+            <tr>Checkbox</tr><br />
+         <input type="radio" class="rad" value="Text"/>
+            <tr>Text</tr><br />
+         <input type="radio" class="rad" value="Paragraph"/>
+            <tr>Paragraph</tr><br />
+        </fieldset>
+    </form>
+  </p>
+  <p> <input type = "button" class ="elements" value="Submit"/>  </p>
+</template>
