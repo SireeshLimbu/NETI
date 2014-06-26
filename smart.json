@@ -1,0 +1,7 @@
+{
+  "packages": {
+    "accounts-admin-ui": {},
+    "router": {},
+    "iron-router": {}
+  }
+}

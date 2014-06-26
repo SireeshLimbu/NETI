@@ -1,0 +1,169 @@
+<head>
+  <title>N.E.T.I.</title>
+</head>
+<body>
+<div class="wrapper" style="background-color: lightcyan;">
+  {{# if currentUser}}
+  {{>survey}}
+  {{else}}
+<h1 style="width: 630px; height:     50px; background-color: black; box-shadow: 10px 10px 5px #888888; color: Blue; font-size: 73px; position: relative; right:-310px">  Welcome To NETI </h1> <br />
+<h4 style="position: relative; bottom: 10px;"> Please Sign in to create a form  :- </h4>
+  <!--{{>loginButtons}}-->
+  {{/if}}
+</div>
+</body>
+<template name="survey">
+    <div class="form" style="background-color: lightgoldenrodyellow">
+        <h1>Please Fill up the following parameters :-</h1>
+        <p> Number of Rounds : <input type="text" class="roundtext"/>
+            <select name="option">
+                <option value="choice" selected>Choose An Option:-</option>
+                <option value="Radio" class="rad" id="1">1. Radio</option>
+                <option value="Text" class="rad" id="2">2. Text</option>
+                <option value="Paragraph" class="rad" id="3">3. Paragraph</option>
+                <option value="Checkbox" class ="rad" id="4">4. Checkbox</option>
+            </select>
+        </p>
+        <p> Time of Each Round (In Secs) : <input type="text" class="timetext" />
+        <select name="option1">
+            <option value="choice" selected>Choose An Option:-</option>
+            <option value="Radio" class="rad" id="1">1. Radio</option>
+            <option value="Text" class="rad" id="2">2. Text</option>
+            <option value="Paragraph" class="rad" id="3">3. Paragraph</option>
+            <option value="Checkbox" class ="rad" id="4">4. Checkbox</option>
+        </select>
+        </p>
+        <p> Enter keys along with their corresponding values:-
+        <form method = "post" >
+            <fieldset>
+                <input type="text" class="key" value="Enter your key"> <input type="text" class="value" value="Enter value of key">
+                <select name="option2">
+                    <option value="choice" selected>Choose An Option:-</option>
+                    <option value="Radio" class="rad" id="1">1. Radio</option>
+                    <option value="Text" class="rad" id="2">2. Text</option>
+                    <option value="Paragraph" class="rad" id="3">3. Paragraph</option>
+                    <option value="Checkbox" class ="rad" id="4">4. Checkbox</option>
+                </select>
+                <input type="text" class="name" value="Enter name">
+                <input type="button" class="butt" value="Add more keys">
+                <div id="my_div"></div>
+            </fieldset>
+        </form>
+        </p>
+        <p> <input type = "button" class ="element" style="color: #ff0000" value="Submit" /> <input type = "button" class ="quiz" style="color: #ff0000" value="Enter Quiz Questions" /> </p>
+    </div>
+</template>
+<template name="surveyresult">
+    <div class="result" style="width: 220px;
+    padding: 10px;
+    border: 5px solid gray;
+    margin: 0px; background-color: lightcyan">
+
+        {{#each res}}
+        <p> {{User_Defined.Name}} <input type = "button" class="show" value="show"> <br /></p>
+        {{/each }}
+   </div>
+</template>
+<template name="survey_show" style="background-color: lightyellow">
+    {{#each select}}
+     <div class="result1" id="myDiv" >
+    <li>
+        Constant Variables:- <br />
+        1. Number of turns : <textarea rows="1" cols="1">{{Constant_Variables.Turns}} </textarea> <br />
+         =>  Format chosen : <textarea rows="1" cols="1">{{Constant_Variables.Format_Turns}} </textarea> <br />
+        2. Round Time (Secs) : <textarea rows="1" cols="1">{{Constant_Variables.RoundTime}}</textarea>  <br />
+         =>  Format chosen : <textarea rows="1" cols="1">{{Constant_Variables.Format_RT}}</textarea> <br />
+    </li>
+    <li>
+        Name of the Variable : <textarea rows="1" cols="1"> {{User_Defined.Name}} </textarea>
+    </li>
+    <li>
+        User Defined Variable :- <br />
+        <textarea rows="3" cols="2">
+        {{User_Defined.Variables.Dimension}}
+        {{User_Defined.Variables.Option}}
+        </textarea>
+    </li>
+    <li>
+        ID   : <textarea rows="1" cols="1"> {{User_Defined.Id}}</textarea>
+    <br />
+    </li>
+    <p> <input type="button" class="back" value="Back To Survey Form">  <input type="button" class="back2" value="Back to list"> </p>
+    </div>
+    {{/each}}
+</template>
+<template name="che" style="background-color: lightyellow">
+    <form method="post">
+        <fieldset>
+            <input type="checkbox" class="check" value="Enter your checkbox" />
+            <tr>Your CheckBox!</tr>
+        </fieldset>
+    </form>
+</template>
+<template name="radi" style="background-color: lightyellow">
+    <form method="post">
+        <fieldset>
+            <input type="radio" class="rad" value="Enter your radio" />
+            <tr>Your Question!</tr>
+        </fieldset>
+    </form>
+</template>
+<template name="te">
+    <form method="post" style="background-color: lightyellow">
+        <fieldset>
+            <input type="text" class="text" placeholder="Type In Your Text" />
+        </fieldset>
+    </form>
+</template>
+<template name="parag" style="background-color: lightyellow">
+    <form method="post">
+        <fieldset>
+            <textarea rows="4" cols="50" placeholder="Enter Your Paragraph">
+            </textarea>
+        </fieldset>
+    </form>
+</template>
+<template name="codeSpace" style="background-color: lightyellow">
+    <form method="post">
+        <fieldset>
+            <textarea id="TextArea" class="code" size="140*140" >
+            </textarea>
+            <input type="button" class="execute" value="Execute Code --> " style="color: #ff0000" />
+            <textarea id="CodeShow" class="cosho" size="140*140">
+            </textarea>
+            </fieldset>
+    </form>
+</template>
+<template name="quiz_form">
+    <div class="form">
+    <p> Enter the Type of Option for the Question : <select name="opti">
+        <option value="choice" selected>Choose An Option:-</option>
+        <option value="Radio" class="rad" id="1">1. Radio</option>
+        <option value="Text" class="rad" id="2">2. Text</option>
+        <option value="Paragraph" class="rad" id="3">3. Paragraph</option>
+        <option value="Checkbox" class ="rad" id="4">4. Checkbox</option>
+    </select> <br />
+        Note : For Textual answers, only one answer window will be provided by default.
+    </p>
+    <p> Enter the number of options : <input type="text" class="options"/> </p>
+        <form name="myform" id="myform" >
+        <input type="button" value="Add" class="addq"/> <input type="button" value="Submit" class="subut"/> <br />
+        <h1> Sample Questionnaire:- </h1> <br />
+            <!--<div id="div1" class="out1"></div>-->
+        </form>
+    </div>
+    <div id="div1" class="out1"></div>
+    <!--<div id="div2" class="out"></div>-->
+</template>
+        <template name="Output">
+          <div id="div2" class="for">
+          <p> Hullo </p>
+          </div>
+
+        </template>
+
+<!--<template name="temp1">-->
+    <!--<div class="temp">-->
+        <!--<li> {{name}} <a href="surveyresult/{{id}}"> show </a> </li>-->
+    <!--</div>-->
+<!--</template>-->
