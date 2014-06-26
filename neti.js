@@ -226,6 +226,7 @@ if (Meteor.isClient) {
         },
         'click .subut': function(event, template){
             $('.form').remove();
+            alert('HAAAAAA');
             var mrmid;
 //            Router.go('Output');
             for(var po=0;po<so-1;po++){
